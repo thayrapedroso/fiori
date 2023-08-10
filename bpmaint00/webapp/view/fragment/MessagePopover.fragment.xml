@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <MessagePopover
+        items="{message>/messageSet}">
+        <MessagePopoverItem
+            type="{
+                path: 'severity',
+                formatter: 'com.pmc.messages.util.Formatter.formatMessageType'
+            }"
+            title="{
+                path: 'severity',
+                formatter: 'com.pmc.messages.util.Formatter.formatMessageTitle'
+            }"
+            description="{message}">
+        </MessagePopoverItem>
+    </MessagePopover>
+</core:FragmentDefinition>

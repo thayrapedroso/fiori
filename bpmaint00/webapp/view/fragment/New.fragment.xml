@@ -1,0 +1,106 @@
+<core:FragmentDefinition
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:l="sap.ui.layout"
+		xmlns:u="sap.ui.unified"
+        xmlns:form="sap.ui.layout.form">
+
+    <Dialog class="sapUiResponsiveContentPadding"
+            title="{i18n>txtNewTitle}"
+            afterClose="onAfterCloseUploadDialog">
+        <content>
+            <form:Form id="formBPNew" width="100%" >
+                <form:title>
+                    <core:Title text="{i18n>txtBPDetail}" level="Auto"/>
+                </form:title>
+                <form:layout>
+                    <form:ResponsiveGridLayout/>
+                </form:layout>
+                <form:formContainers>
+                    <form:FormContainer title="{i18n>txtCentralData}">
+                        <form:FormElement label="{i18n>txtPartnerType}">
+                            <form:fields> 
+                                <!--Input id="txtPartnerType" value="{worklistView>/New/PartnerType}" required="true" /-->
+                                <ComboBox id="cbTipo" selectedKey="{worklistView>/New/PartnerType}" required="true" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtPartnerName}">
+                            <form:fields> 
+                                <Input id="txtPartnerName1" value="{worklistView>/New/PartnerName1}" /> 
+                                <Input id="txtPartnerName2" value="{worklistView>/New/PartnerName2}" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtSearchTerm}">
+                            <form:fields> 
+                                <Input id="txtSearchTerm1" value="{worklistView>/New/SearchTerm1}" /> 
+                                <Input id="txtSearchTerm2" value="{worklistView>/New/SearchTerm2}" />
+                            </form:fields>
+                        </form:FormElement>
+                    </form:FormContainer>
+                    <form:FormContainer title="{i18n>txtAddressData}">
+                        <form:FormElement label="{i18n>txtStreet}">
+                            <form:fields> 
+                                <Input id="txtStreet" value="{worklistView>/New/Street}" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtHouseNumber}">
+                            <form:fields> 
+                                <Input id="txtHouseNumber" value="{worklistView>/New/HouseNumber}" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtDistrict}">
+                            <form:fields> 
+                                <Input id="txtDistrict" value="{worklistView>/New/District}" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtCity}">
+                            <form:fields> 
+                                <Input id="txtCity" value="{worklistView>/New/City}" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtRegion}">
+                            <form:fields> 
+                                <Input id="txtRegion" value="{worklistView>/New/Region}" maxLength="3" required="true" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtZipCode}">
+                            <form:fields> 
+                                <Input id="txtZipCode" value="{worklistView>/New/ZipCode}" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement label="{i18n>txtCountry}">
+                            <form:fields> 
+                                <!--Input id="txtCountry" value="{worklistView>/New/Country}" /-->
+                                <Input id="txtCountry" value="{worklistView>/New/Country}" showValueHelp="true" valueHelpRequest="openCountryDialog"/>
+                            </form:fields>
+                        </form:FormElement>
+                    </form:FormContainer>
+                </form:formContainers>
+            </form:Form>
+        </content>
+        <!--beginButton>
+            <Button text="{i18n>btnSave}" press="onSavePress" />
+        </beginButton>
+		<endButton>
+			<Button text="{i18n>btnClose}" press="onClose" />
+		</endButton-->
+        <footer>
+			<Toolbar>
+				<content>
+					<!--Button
+                        id="buttonMessages"
+                        icon="sap-icon://alert"
+                        press="messagePopoverOpen"
+                        text="{controls>/buttonMessagesText}"
+                        type="{controls>/buttonMessagesType}">
+                    </Button-->
+					<ToolbarSpacer />
+					<Button text="{i18n>btnSave}" press="onSavePress" />
+					<Button text="{i18n>btnClose}" press="onClose" />
+				</content>
+			</Toolbar>
+		</footer>
+
+    </Dialog>
+</core:FragmentDefinition>

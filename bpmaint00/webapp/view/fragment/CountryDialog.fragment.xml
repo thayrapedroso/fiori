@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog
+        title="{i18n>txtCountry}"
+        search="onSearchCountryDialog"
+        confirm="onCloseCountryDialog"
+        items="{
+                    path: '/CountrySet'
+                }" >
+        <StandardListItem
+            title="{Land}"
+            description="{LandName}"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

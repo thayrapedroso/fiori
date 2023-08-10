@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZBP_00_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="BusinessPartner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PartnerId"/>
+                </Key>
+                <Property Name="PartnerId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Parc.negóc." sap:updatable="false"/>
+                <Property Name="PartnerType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Ctg.parceiro" sap:updatable="false"/>
+                <Property Name="PartnerName1" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Nome1/sobrenome"/>
+                <Property Name="PartnerName2" Type="Edm.String" MaxLength="35" sap:unicode="false" sap:label="Nome2/1º nome"/>
+                <Property Name="SearchTerm1" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Termo pesq.1"/>
+                <Property Name="SearchTerm2" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Termo pesq.2"/>
+                <Property Name="Street" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Rua"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Nº"/>
+                <Property Name="District" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Bairro"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Cidade"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Região"/>
+                <Property Name="ZipCode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Código postal"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="País"/>
+                <NavigationProperty Name="CountryDetail" Relationship="ZBP_00_SRV.ToCountryDetail" FromRole="FromRole_ToCountryDetail" ToRole="ToRole_ToCountryDetail"/>
+            </EntityType>
+            <EntityType Name="Country" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land"/>
+                </Key>
+                <Property Name="Land" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="País" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LandName" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="DenominaçãoDescr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ToCountryDetail" sap:content-version="1">
+                <End Type="ZBP_00_SRV.BusinessPartner" Multiplicity="0..1" Role="FromRole_ToCountryDetail"/>
+                <End Type="ZBP_00_SRV.Country" Multiplicity="0..1" Role="ToRole_ToCountryDetail"/>
+            </Association>
+            <EntityContainer Name="ZBP_00_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BusinessPartnerSet" EntityType="ZBP_00_SRV.BusinessPartner" sap:deletable="false" sap:searchable="true" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountrySet" EntityType="ZBP_00_SRV.Country" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ToCountryDetailSet" Association="ZBP_00_SRV.ToCountryDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BusinessPartnerSet" Role="FromRole_ToCountryDetail"/>
+                    <End EntitySet="CountrySet" Role="ToRole_ToCountryDetail"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://201.6.255.151:9222/sap/opu/odata/sap/ZBP_00_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://201.6.255.151:9222/sap/opu/odata/sap/ZBP_00_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
